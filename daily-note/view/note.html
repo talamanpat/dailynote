@@ -1,0 +1,35 @@
+{% extends "template.django" %}
+{% block content %}
+<section id="note">
+	<article id="note-page">
+		<header id="note-header">
+			<span id="note-date" ><input type="hidden" value="{{ note.date }}" id="note-new-date" /> {{ datestring }}</span>			
+			<h1 id="note-title" class="note-title-class" contenteditable="true">
+			{% if note.title %}
+				{{note.title}}
+			{% endif %}
+			</h1>
+			<h1 id="note-title-placeholder" class="note-title-class">Some title about this day</h1>
+			<input type="hidden" value="{{ note.date }}" id="note-this-date" /> 							
+		</header>
+		<div class="clear"></div>
+		<section id="note-body" class="note-body-class note-body-fix-height" contenteditable="true">
+			{% if note.body %}
+				{{note.body}}
+			{% endif %}
+		</section>
+		<section id="note-body-placeholder" class="note-body-class note-body-fix-height">Write something</section>
+	</article>
+	<section id="note-options">
+		<!--  <span id="save-state">Saving...</span>
+		<input type="checkbox" name="autosave" value="autosave" id="note-autosave"/> <label for = "autosave">Auto-save</label> -->
+		<button id="note-save" type="button">
+		{% if note.title and note.body %}
+			Saved
+		{% else %}
+			New
+		{% endif %}		
+		</button>
+	</section>
+</section> <!-- #main -->				
+{% endblock %}

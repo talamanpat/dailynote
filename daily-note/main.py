@@ -82,7 +82,7 @@ class MainPage(webapp.RequestHandler):
                 }
     
             #write the page
-            path = os.path.join(__view__, 'template.html')
+            path = os.path.join(__view__, 'note.html')
             self.response.out.write(template.render(path, template_values))
 
         #if isn't logged
