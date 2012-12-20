@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"  lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -21,13 +21,11 @@
 		<link href="styles/redmond/jquery-ui-1.9.1.custom.css" rel="stylesheet">
 		
         <script src="scripts/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-		
-    </head>
-    <body>
         <!--[if lt IE 9]>
         	<script>window.location.href =  '/modernbrowser'</script>
         <![endif]-->
-
+    </head>
+    <body>
         <div class="header-container">
             <header class="wrapper clearfix">
         		{% if user %}
@@ -35,8 +33,8 @@
                 <nav>
                     <ul>
                         <li><a href="#" class="link-today">Today</a></li>
-                        <!-- <li><a href="#">Calendar</a></li>       
-                        <li><a href="#">Donate</a></li>  -->
+                        <li><a href="/notebook">Notebook</a></li>       
+                        <!-- <li><a href="#">Donate</a></li>  -->
                     </ul>
                 </nav>
             	{% else %}   
@@ -62,8 +60,8 @@
         		<nav>
                     <ul>
                         <li><a href="#" class="link-today">Today</a></li>
-                        <!--  <li><a href="#">Calendar</a></li>   
-                        <li><a href="#">Donate</a></li> -->      
+                         <li><a href="/notebook">Notebook</a></li>   
+                        <!-- <li><a href="#">Donate</a></li> -->      
                     </ul>
                 </nav>
                 {% endif %}

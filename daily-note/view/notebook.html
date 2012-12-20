@@ -1,0 +1,18 @@
+{% extends "template.django" %}
+{% block content %}
+<section id="note">
+	<article id="note-page">
+		<header id="note-header">
+			<h1 class="no-margin-bottom">Your Notebook!</h1>
+		</header>
+		<section class="note-body-class" >
+		{% for note in notes %}
+			<article>
+		        <a href="/?date={{ note.date }}"><h3><b>{{ note.date }}</b> {{ note.title }} </h3></a>
+		      <blockquote>{{ note.body }}</blockquote>
+		    </article>
+	    {% endfor %}
+		</section>
+	</article>
+</section>
+{% endblock %}

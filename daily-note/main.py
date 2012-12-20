@@ -104,9 +104,52 @@ class MainPage(webapp.RequestHandler):
             self.response.out.write(template.render(path, template_values))
 
             
-            #self.redirect(users.create_login_url(self.request.uri))
-            #return
         
+
+class Notebook(webapp.RequestHandler):
+    def get(self):
+
+        user = users.get_current_user()
+            
+        #if the user is logged
+        if user:
+            
+            #search for notes
+            notes = Note.all().filter('author =', user)
+            
+            #logout link
+            url = users.create_logout_url(self.request.uri)
+            url_linktext = 'Logout'
+
+            #values for templates
+            template_values = {
+               'user':user,
+                'notes': notes,
+                'url': url,
+                'url_linktext': url_linktext,
+                }
+    
+            #write the page
+            path = os.path.join(__view__, 'notebook.html')
+            self.response.out.write(template.render(path, template_values))
+
+        #if isn't logged
+        else:
+            
+            #url login
+            url = users.create_login_url(self.request.uri)
+            url_linktext = 'Login'
+            
+            
+            #values for templates
+            template_values = {
+                'url': url,
+                'url_linktext': url_linktext,
+                }
+    
+            #write the page
+            path = os.path.join(__view__, 'home.html')
+            self.response.out.write(template.render(path, template_values))
 
 
 class SaveNote(webapp.RequestHandler):
@@ -141,7 +184,9 @@ class SaveNote(webapp.RequestHandler):
         else:
             self.redirect(users.create_login_url(self.request.uri))
 
-
+            
+        
+        
 class Today(webapp.RequestHandler):
     def get(self):
         self.response.out.write("<script>var localTime = new Date(); window.location.href =  '/?date='+ localTime.getFullYear('yyyy')+'-'+(localTime.getMonth()+1)+'-'+localTime.getDate()</script>")            
@@ -155,6 +200,7 @@ class ModernBrowser(webapp.RequestHandler):
 
 application = webapp.WSGIApplication(
                                      [('/', MainPage),
+                                      ('/notebook', Notebook),
                                       ('/savenote', SaveNote),
                                       ('/modernbrowser', ModernBrowser),
                                       ('/today', Today)],
