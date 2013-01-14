@@ -191,6 +191,10 @@ class Today(webapp.RequestHandler):
     def get(self):
         self.response.out.write("<script>var localTime = new Date(); window.location.href =  '/?date='+ localTime.getFullYear('yyyy')+'-'+(localTime.getMonth()+1)+'-'+localTime.getDate()</script>")            
 
+class Yesterday(webapp.RequestHandler):
+    def get(self):
+        self.response.out.write("<script>var localTime = new Date();var yesterday = new Date(); yesterday.setDate(localTime.getDate() - 1); window.location.href =  '/?date='+ yesterday.getFullYear('yyyy')+'-'+(yesterday.getMonth()+1)+'-'+yesterday.getDate()</script>")            
+
 class ModernBrowser(webapp.RequestHandler):
     def get(self):
         self.response.out.write('<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>')            
@@ -203,6 +207,7 @@ application = webapp.WSGIApplication(
                                       ('/notebook', Notebook),
                                       ('/savenote', SaveNote),
                                       ('/modernbrowser', ModernBrowser),
+                                      ('/yesterday', Yesterday),
                                       ('/today', Today)],
                                      debug=True)
 

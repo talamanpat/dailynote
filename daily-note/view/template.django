@@ -33,8 +33,9 @@
                 <nav>
                     <ul>
                         <li><a href="#" class="link-today">Today</a></li>
-                        <li><a href="/notebook">Notebook</a></li>       
-                        <!-- <li><a href="#">Donate</a></li>  -->
+                        <li><a href="#" class="link-yesterday">Yesterday</a></li>
+                        <!-- <li><a href="/notebook">Notebook</a></li>       
+                        <li><a href="#">Donate</a></li>  -->
                     </ul>
                 </nav>
             	{% else %}   
@@ -60,8 +61,9 @@
         		<nav>
                     <ul>
                         <li><a href="#" class="link-today">Today</a></li>
-                         <li><a href="/notebook">Notebook</a></li>   
-                        <!-- <li><a href="#">Donate</a></li> -->      
+                        <li><a href="#" class="link-yesterday">Yesterday</a></li>
+                         <!-- <li><a href="/notebook">Notebook</a></li>   
+                         <li><a href="#">Donate</a></li> -->      
                     </ul>
                 </nav>
                 {% endif %}

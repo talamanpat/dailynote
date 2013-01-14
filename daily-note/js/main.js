@@ -23,6 +23,7 @@ $(document).ready(function() {
 	
 	//---- links
 	var linkToday = $(".link-today");
+	var linkYesterday = $(".link-yesterday");
 	
 
 	//-----------------------texts------------------------------------
@@ -40,6 +41,7 @@ $(document).ready(function() {
 	var URLSavenote = '/savenote';
 	var URLHome = '/';
 	var URLToday = '/today';
+	var URLYesterday = '/yesterday';
 	var URLModernBrowser = '/modernbrowser';
 	var URLImageCalendar = 'images/calendar.gif';
 	
@@ -136,34 +138,20 @@ $(document).ready(function() {
 	}
 	
 	//------ contenteditables changes
-	/*noteContents.keypress(function() {
-	    noteChanged();
-	});*/
-	/*
-	 noteContents.blur(function() {
-	    if(!state){
-	    	saveAsync();
-		}
-	    checkPlaceholders();
-	});
 	
-	  
-	  
-	 noteContents.keydown(function() {
-	    noteChanged();
-	});
-	
-	function noteChanged() {
-	    state = false; 
-	    noteSave.html(textSave); 
-	};*/
-	
-	//todo:
 	noteContents.focus(function() {
 		setOldNoteContent();
 	    state = false; 
 		noteSave.html(textSave);
 	});
+	
+	//todo:	
+	noteContents.keydown(function() {
+	    state = false; 
+	    noteSave.html(textSave); 
+	});
+	
+	
 		
 	noteContents.blur(function() {
 	    if(isNoteContentChanged()){
@@ -212,4 +200,8 @@ $(document).ready(function() {
 		return false;
 	});
 
+	linkYesterday.click(function(){		
+		goToURL(URLYesterday);		
+		return false;
+	});
  });
